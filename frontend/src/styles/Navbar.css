@@ -1,0 +1,78 @@
+.navbar {
+  background: var(--color-primary);
+  padding: 10px 20px;
+  color: #fff;
+  position: fixed;   /* fixa no topo */
+  top: 0;
+  left: 0;
+  width: 100%;       /* ocupa toda a largura */
+  z-index: 1000;     /* fica acima do conteúdo */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;   /* evita cortar itens em telas menores */
+}
+
+.logo {
+  margin: 0;
+  font-weight: bold;
+  color: var(--color-secondary); /* destaque no logo */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;   /* evita cortar o último item */
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--color-secondary); /* dourado no hover */
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--color-secondary); /* dourado cerveja para contraste */
+  font-size: 24px;
+  cursor: pointer;
+  display: none; /* escondido no desktop */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* aparece no celular */
+  }
+
+  .nav-links {
+    display: none; /* escondido por padrão */
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;   /* ocupa toda a largura no mobile */
+    background: var(--color-primary);
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .nav-links.open {
+    display: flex; /* aparece quando o botão ☰ é clicado */
+  }
+
+  .nav-links li {
+    text-align: center; /* centraliza os links no mobile */
+  }
+}

@@ -1,0 +1,56 @@
+.header {
+  background: linear-gradient(
+    rgba(139, 0, 0, 0.8),
+    rgba(139, 0, 0, 0.9)
+  ),
+  url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092") center/cover no-repeat;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.header-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--color-secondary); /* dourado */
+}
+
+.header p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #fff;
+  color: var(--color-primary);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .header {
+    padding: 60px 15px;
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+}

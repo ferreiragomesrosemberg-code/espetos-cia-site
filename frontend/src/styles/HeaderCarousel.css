@@ -1,0 +1,120 @@
+.header-carousel {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Cada slide */
+.slide {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay centralizado */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--color-text-light);
+  background: rgba(0,0,0,0.4);
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.overlay h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--color-secondary);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* Botão dentro do overlay */
+.overlay .btn {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-text-light);
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.overlay .btn:hover {
+  background: var(--color-primary);
+}
+
+/* Setas personalizadas */
+.slick-prev, .slick-next {
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+}
+
+.slick-prev { left: 20px; }
+.slick-next { right: 20px; }
+
+.slick-prev:before, .slick-next:before {
+  content: none;
+}
+
+.slick-prev svg, .slick-next svg {
+  color: var(--color-secondary);
+  font-size: 2rem;
+  background: rgba(28,28,28,0.7);
+  border-radius: 50%;
+  padding: 8px;
+  transition: background 0.3s ease;
+}
+
+.slick-prev svg:hover, .slick-next svg:hover {
+  background: rgba(28,28,28,0.9);
+}
+
+/* Dots personalizados */
+.slick-dots {
+  bottom: 15px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: var(--color-secondary);
+  opacity: 0.6;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .slide {
+    height: 250px;
+  }
+  .overlay {
+    max-width: 90%;
+    padding: 15px;
+  }
+  .overlay h2 { font-size: 1.4rem; }
+  .overlay p { font-size: 1rem; }
+}

@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: espetos-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app   # monta o código para reload automático
+
+  frontend:
+    build: ./frontend
+    container_name: espetos-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - BACKEND_URL=http://backend:8000  # proxy flexível
+    volumes:
+      # monta apenas src e public para não sobrescrever node_modules
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+
+  db:
+    image: postgres:18
+    container_name: espetos-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 197822
+      POSTGRES_DB: espetos
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

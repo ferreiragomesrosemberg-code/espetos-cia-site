@@ -1,0 +1,142 @@
+.produtos-destaque {
+  width: 95%;              /* painel ocupa 80% da tela */
+  margin: 40px auto;       /* centraliza e dá respiro em cima/baixo */
+  padding: 40px 20px;
+  display: block;   /* garante que seja um bloco independente */
+  clear: both; 
+  text-align: center;
+  background: url("https://www.transparenttextures.com/patterns/dark-denim.png"), #2a0a0a;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6); /* sombra externa para destacar */
+}
+
+.produtos-destaque h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #f9f3ef;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 8px rgba(184, 134, 11, 0.4);
+}
+
+/* Reflexo dourado animado no título */
+.produtos-destaque h2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,215,0,0.1) 0%,
+    rgba(255,215,0,0.6) 50%,
+    rgba(255,215,0,0.1) 100%
+  );
+  animation: waveReflection 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes waveReflection {
+  0% { transform: translateX(-50%); opacity: 0.3; }
+  50% { transform: translateX(50%); opacity: 0.7; }
+  100% { transform: translateX(-50%); opacity: 0.3; }
+}
+
+/* Grid fixo para 4 cards lado a lado */
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.card-produto {
+  background: linear-gradient(180deg, #ff9800 0%, #e53935 100%);
+  border-radius: 12px;
+  box-shadow: inset 0 0 25px rgba(255,215,0,0.4), 0 4px 12px rgba(0,0,0,0.6);
+  padding: 15px;
+  transition: transform 0.6s ease, box-shadow 0.3s ease;
+  border: 3px solid #ffd700;
+  animation: innerGlowPulse 4s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.card-produto:hover {
+  transform: scale(1.05);
+  box-shadow: inset 0 0 35px rgba(255,215,0,0.7), 0 8px 18px rgba(255,140,0,0.7);
+}
+
+.card-produto img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease;
+}
+
+.card-produto:hover img {
+  transform: scale(1.08);
+}
+
+.card-produto h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.card-produto p {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #ffd700;
+}
+
+.btn-comprar {
+  background: #b8860b;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  animation: bounceColor 2s ease infinite;
+}
+
+.btn-comprar:hover {
+  background: #e6c200;
+  transform: scale(1.05);
+}
+
+@keyframes bounceColor {
+  0%, 100% { transform: translateY(0); background: #b8860b; }
+  50% { transform: translateY(-6px); background: #e6c200; }
+}
+
+@keyframes innerGlowPulse {
+  0% { box-shadow: inset 0 0 15px rgba(255,215,0,0.3), 0 4px 12px rgba(0,0,0,0.6); }
+  50% { box-shadow: inset 0 0 35px rgba(255,215,0,0.7), 0 6px 16px rgba(255,140,0,0.7); }
+  100% { box-shadow: inset 0 0 15px rgba(255,215,0,0.3), 0 4px 12px rgba(0,0,0,0.6); }
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+  .produtos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .produtos-destaque {
+    width: 95%;
+  }
+  .produtos-grid {
+    grid-template-columns: 1fr;
+  }
+  .produtos-destaque h2 { font-size: 22px; }
+  .card-produto h3 { font-size: 16px; }
+  .card-produto p { font-size: 14px; }
+}

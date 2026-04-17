@@ -1,0 +1,198 @@
+.depoimentos {
+  padding: 50px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.depoimentos h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 30px;
+}
+
+/* Grid padrão (desktop/tablet) */
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.card-depoimento {
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  opacity: 0;
+}
+
+.card-depoimento.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.card-depoimento:hover {
+  transform: translateY(-5px);
+}
+
+/* Avatar container */
+.avatar-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.avatar-container img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  animation: avatarPulseRotateScale 6s ease-in-out infinite;
+}
+
+/* Contorno gradiente animado */
+.avatar-container::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #ffd700,
+    #ff0000,
+    #228b22,
+    #ffd700
+  );
+  animation: rotateGradient 6s linear infinite;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+/* Hover no avatar */
+.avatar-container:hover::before {
+  animation: rotateGradient 2s linear infinite;
+  background: conic-gradient(
+    from 0deg,
+    #ff69b4,
+    #00ffff,
+    #32cd32,
+    #ff69b4
+  );
+}
+
+/* Fade-in suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Brilho pulsante + rotação + scale */
+@keyframes avatarPulseRotateScale {
+  0% {
+    transform: rotate(0deg) scale(1);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6),
+                0 0 20px rgba(255, 215, 0, 0.4);
+  }
+  25% {
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8),
+                0 0 30px rgba(34, 139, 34, 0.6);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 1),
+                0 0 40px rgba(255, 0, 0, 0.8);
+  }
+  75% {
+    transform: rotate(-5deg) scale(1.05);
+    box-shadow: 0 0 20px rgba(34, 139, 34, 0.8),
+                0 0 30px rgba(255, 215, 0, 0.6);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6),
+                0 0 20px rgba(255, 215, 0, 0.4);
+  }
+}
+
+/* Gradiente girando */
+@keyframes rotateGradient {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Setas personalizadas */
+.custom-arrow {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.custom-arrow:hover {
+  background: var(--color-secondary);
+  color: #000;
+}
+
+.custom-arrow.prev {
+  left: -50px;
+}
+
+.custom-arrow.next {
+  right: -50px;
+}
+
+/* Dots personalizados */
+.slick-dots {
+  bottom: -35px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: var(--color-secondary); /* dourado */
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--color-primary); /* vinho */
+  opacity: 1;
+  font-size: 16px; /* cresce no ativo */
+}
+
+/* Mobile: vira carrossel horizontal e oculta setas */
+@media (max-width: 768px) {
+  .depoimentos-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+
+  .card-depoimento {
+    scroll-snap-align: start;
+    min-width: 280px;
+  }
+
+  .depoimentos-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-arrow {
+    display: none !important;
+  }
+}
