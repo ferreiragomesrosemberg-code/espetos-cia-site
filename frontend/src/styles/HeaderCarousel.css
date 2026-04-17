@@ -61,33 +61,47 @@
   background: var(--color-primary);
 }
 
-/* Setas personalizadas */
-.slick-prev, .slick-next {
-  z-index: 10;
+/* Setas personalizadas - degradê animado vermelho para laranja e seta amarela */
+.custom-prev,
+.custom-next {
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  z-index: 50;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.slick-prev { left: 20px; }
-.slick-next { right: 20px; }
+.custom-prev { left: 20px; }
+.custom-next { right: 20px; }
 
-.slick-prev:before, .slick-next:before {
-  content: none;
-}
-
-.slick-prev svg, .slick-next svg {
-  color: var(--color-secondary);
+.custom-prev svg,
+.custom-next svg {
+  color: yellow; /* cor da seta */
   font-size: 2rem;
-  background: rgba(28,28,28,0.7);
+  background: linear-gradient(135deg, red, orange);
   border-radius: 50%;
-  padding: 8px;
-  transition: background 0.3s ease;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  animation: gradientShift 3s ease infinite; /* animação do degradê */
 }
 
-.slick-prev svg:hover, .slick-next svg:hover {
-  background: rgba(28,28,28,0.9);
+.custom-prev svg:hover,
+.custom-next svg:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+}
+
+/* Animação suave do degradê */
+@keyframes gradientShift {
+  0% { background: linear-gradient(135deg, red, orange); }
+  50% { background: linear-gradient(135deg, orange, red); }
+  100% { background: linear-gradient(135deg, red, orange); }
 }
 
 /* Dots personalizados */
@@ -108,9 +122,11 @@
 
 /* Responsivo */
 @media (max-width: 768px) {
-  .slide {
-    height: 250px;
+  .custom-prev,
+  .custom-next {
+    display: none !important; /* esconde setas no mobile */
   }
+
   .overlay {
     max-width: 90%;
     padding: 15px;

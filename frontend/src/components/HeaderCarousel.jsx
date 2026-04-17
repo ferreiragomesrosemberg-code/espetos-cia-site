@@ -6,11 +6,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function PrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
     <div
-      className={className}
-      style={{ ...style, display: "block", zIndex: 10 }}
+      className="custom-prev"
       onClick={onClick}
       aria-label="Slide anterior"
     >
@@ -20,11 +19,10 @@ function PrevArrow(props) {
 }
 
 function NextArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
     <div
-      className={className}
-      style={{ ...style, display: "block", zIndex: 10 }}
+      className="custom-next"
       onClick={onClick}
       aria-label="Próximo slide"
     >
