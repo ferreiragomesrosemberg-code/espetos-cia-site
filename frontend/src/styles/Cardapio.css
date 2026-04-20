@@ -1,0 +1,181 @@
+.cardapio {
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #2a0a0a;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.cardapio h1 {
+  font-size: 34px;
+  margin-bottom: 25px;
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255,215,0,0.6);
+}
+
+/* Tabs */
+.tabs-cardapio {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: #666;
+  transform: scale(1.05);
+}
+
+.tab-btn.ativo {
+  background: linear-gradient(135deg, #ffcc00, #ff8800);
+  color: #2a0a0a;
+  box-shadow: 0 0 12px rgba(255,200,0,0.7);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Brilho pulsante para aba ativa */
+@keyframes glowPulse {
+  0%   { box-shadow: 0 0 8px rgba(255,200,0,0.5); }
+  50%  { box-shadow: 0 0 16px rgba(255,200,0,0.9); }
+  100% { box-shadow: 0 0 8px rgba(255,200,0,0.5); }
+}
+
+/* Grid layout */
+.grid-cardapio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  animation: fadeCategory 0.5s ease; /* animação suave ao trocar categoria */
+}
+
+.item-cardapio {
+  background: linear-gradient(135deg, #ff9800, #e53935);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(255,215,0,0.4), 0 4px 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.item-cardapio:hover {
+  transform: scale(1.05);
+}
+
+.item-cardapio img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.info-cardapio {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-cardapio h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.info-cardapio .preco {
+  font-size: 16px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* Animações */
+.fade-in {
+  animation: fadeInSlide 0.6s ease;
+}
+
+.fade-stagger {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInSlide 0.6s ease forwards;
+}
+
+.fade-stagger-zoom {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: fadeInZoom 0.6s ease forwards;
+}
+
+/* Keyframes */
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInZoom {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Nova animação para troca de categoria */
+@keyframes fadeCategory {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Dropdown estilizado */
+.dropdown-cardapio {
+  display: none; /* escondido por padrão */
+}
+
+.dropdown-cardapio select {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 25px auto;
+  display: block;
+  text-align: center;
+}
+
+/* Hover e foco */
+.dropdown-cardapio select:hover,
+.dropdown-cardapio select:focus {
+  background: #666;
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Opção ativa */
+.dropdown-cardapio option:checked {
+  background: linear-gradient(135deg, #ffcc00, #ff8800);
+  color: #2a0a0a;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Responsividade: mostra dropdown em telas menores */
+@media (max-width: 992px) {
+  .tabs-cardapio {
+    display: none; /* esconde abas */
+  }
+
+  .dropdown-cardapio {
+    display: block; /* mostra dropdown */
+  }
+}
