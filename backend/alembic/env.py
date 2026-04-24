@@ -29,6 +29,12 @@ from app.db.base import Base
 from app.models.contato import Contato
 from app.models.cardapio import Cardapio
 from app.models.promocao import Promocao
+from app.models.cliente import Cliente
+from app.models.pedido import Pedido
+
+
+
+
 from app.models.user import User  # não esquecer de incluir
 
 # Metadados usados pelo Alembic para autogenerate
