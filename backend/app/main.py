@@ -4,11 +4,11 @@ from fastapi import FastAPI
 from app.core.middleware import setup_middlewares
 from app.core.logging import logger
 from app.core.exceptions import register_exception_handlers
-from app.routers import cardapio, promocao, contato
+from app.routers import cardapio, promocao, contato, pedidos, clientes
 
 app = FastAPI(
     title="Espetos & Cia API",
-    description="API para gerenciar cardápio, promoções e contato do restaurante",
+    description="API para gerenciar cardápio, promoções, contato e pedidos do restaurante",
     version="1.0.0"
 )
 
@@ -18,10 +18,12 @@ setup_middlewares(app)
 # Registra handlers de exceção (global, SQLAlchemy, validação)
 register_exception_handlers(app)
 
-# Inclui routers
+# Inclui routers com prefixos e tags
 app.include_router(cardapio.router, prefix="/cardapio", tags=["Cardápio"])
 app.include_router(promocao.router, prefix="/promocoes", tags=["Promoções"])
 app.include_router(contato.router, prefix="/contato", tags=["Contato"])
+app.include_router(clientes.router, prefix="/clientes", tags=["Clientes"])
+app.include_router(pedidos.router, prefix="/pedidos", tags=["Pedidos"])
 
 # Rotas utilitárias
 @app.get("/")

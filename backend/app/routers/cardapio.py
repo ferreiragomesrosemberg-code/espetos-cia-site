@@ -3,8 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
 from app.models.cardapio import Cardapio
 
-router = APIRouter(prefix="/cardapio", tags=["Cardápio"])
-
+router = APIRouter()
 def get_db():
     db = SessionLocal()
     try:

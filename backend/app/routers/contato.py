@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
 from app.models.contato import Contato
 
-router = APIRouter(prefix="/contato", tags=["Contato"])
+router = APIRouter()
 
 def get_db():
     db = SessionLocal()

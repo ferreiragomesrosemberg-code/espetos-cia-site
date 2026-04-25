@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
 from app.models.promocao import Promocao
 
-router = APIRouter(prefix="/promocao", tags=["Promoção"])
+router = APIRouter()
 
 def get_db():
     db = SessionLocal()
